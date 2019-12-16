@@ -4,6 +4,8 @@ import csv
 # Path to collect data from the Resources folder
 budgetdata_csv = os.path.join('..', 'Resources', 'budget_data.csv')
 
+def as_currency(amount):
+   return '$:,.2f'.format(amount)
 
 # Read in the CSV file
 with open(budgetdata_csv, 'r') as csvfile:
@@ -37,10 +39,16 @@ with open(budgetdata_csv, 'r') as csvfile:
         # If the wrestler's name in a row is equal to that which the user input, run the 'print_percentages()' function
      #   if name_to_check == row[0]:
       #      print_percentages(row)
-print(profitorloss)
-print(rowcount)
-print(profitorloss / rowcount)
-print(greatestincrease)
-print(great_inc_date)
-print(greatestdecrease)
-print(great_dec_date)
+
+print("Financial Analysis")
+print("--------------------------------------")
+print(f"Total Months:  {rowcount} ")
+print(f'Total: ${profitorloss:.0f}'.replace('$-', '-$'))
+print(f'Average Change: ${profitorloss / rowcount :.2f}'.replace('$-', '-$'))
+print(f'Greatest Increase in Profits: {great_inc_date}, $({greatestincrease:.0f})'.replace('$-', '-$'))
+print(f'Greatest Decrease in Profits: {great_dec_date}, $({greatestdecrease:.0f})'.replace('$-', '-$'))
+
+
+
+#Greatest Increase in Profits: Feb-2012 ($1926159)
+#Greatest Decrease in Profits: Sep-2013 ($-2196167)
