@@ -4,6 +4,8 @@ import csv
 # Path to collect data from the Resources folder
 budgetdata_csv = os.path.join('..', 'Resources', 'budget_data.csv')
 
+
+
 def as_currency(amount):
    return '$:,.2f'.format(amount)
 
@@ -49,6 +51,37 @@ print(f'Greatest Increase in Profits: {great_inc_date}, $({greatestincrease:.0f}
 print(f'Greatest Decrease in Profits: {great_dec_date}, $({greatestdecrease:.0f})'.replace('$-', '-$'))
 
 
+# Specify the file to write to
+output_path = os.path.join("..", "Resources", "output_for_budgetdata.txt")
+# Should have defined these earlier than print o h well
+String_1 = "Total Months: " + str(rowcount) + "\n"
+String_2 = "Total : $" + str((profitorloss)) + "\n"
+String_3 = f'Average Change: ${profitorloss / rowcount :.2f}'.replace('$-', '-$') + "\n"
+String_4 = f'Greatest Increase in Profits: {great_inc_date}, $({greatestincrease:.0f})'.replace('$-', '-$') + "\n"
+String_5 = f'Greatest Decrease in Profits: {great_dec_date}, $({greatestdecrease:.0f})'.replace('$-', '-$') + "\n"
 
-#Greatest Increase in Profits: Feb-2012 ($1926159)
-#Greatest Decrease in Profits: Sep-2013 ($-2196167)
+# Open the file using "write" mode. Specify the variable to hold the contents
+
+with open(output_path, 'w', newline='') as file:
+
+    # Write the first row (column headers)
+    file.write("Financial Analysis\n")
+ 
+    # Write the second row
+    file.write("----------------------------------------------\n")
+
+
+    # Write the Third row
+    file.write(String_1)
+
+        # Write the fourth row
+    file.write(String_2)
+
+       # Write the fifth row
+    file.write(String_3)
+
+        # Write the sixth row
+    file.write(String_4)
+
+            # Write the seventh row
+    file.write(String_5)
